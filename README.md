@@ -3,12 +3,29 @@
 Write a program that will grade a multiple choice test. Leave the Main class alone for now and start coding in the UnitTest.java file.
 
 
-### Begin by writing the `UnitTest` class
+### Begin by writing the `StudentAnswer` class
+**Class Name:** StudentAnswer
+
+**Instance Variables:**
+`String studentName`
+`String[] answers`
+
+**Instance Methods**
+- **Accessor** methods for `studentName` and `answers`
+- a **`toString()`** method to display the student's answers
+  
+| Name |     |  
+|------|-----|
+| 1)   | B   | 
+| 2)   | D   | 
+| 3)   | C   | 
+
+### Rewrite parts of the `UnitTest` class
 **Class Name:** UnitTest
 
 **Instance Variables:** 
-
 `String[] answerKey` -- to represent a test answer key. Initialize it according to the following key (it should contain the letters only)
+
 
 |Answer| Key  |      |      |      |
 |------|------|------|------|------|
@@ -17,18 +34,20 @@ Write a program that will grade a multiple choice test. Leave the Main class alo
 | 11.B | 12.E | 13.E | 14.D | 15.D |
 | 16.A | 17.C | 18.C | 19.A | 20.E |
 
-`String[] studentAns`
+`StudentAnswer[] studentAns` -- an array of StudentAnswers which will contain a `studentName` String and an array of `answers`.
 
 **Instance Methods:**
 
-- A **constructor** that accepts one argument for `studenAns`. Have the constructor initialize the array with the same length as the parameter. Copy each element from the parameter into the `studentAns` array using a for loop and making sure each answer gets changed to uppercase.
+- A **constructor** that accepts one argument for. Rewrite this constructor to take in a `fileName`. Use this and a Scanner to read in a `.csv` file which will contain the answers for a number of students. Have the constructor loop through the file and create a `StudentAnswer` object from each line. Initialize the `studentAns` array with the same length as the file (minus the header). Turn each line in the file into a `StudentAnswer` object and place this into the `studentAns` array. 
 - **Accessor** method for `studentAns`.
-- **`totalCorrect()`** that will return the number of correctly answered questions.
+
+Ammend the following methods to work on an array of `StudentAnswer` objects
+- **`totalCorrect()`** that will take in a `studentName` and return the number of correctly answered questions for that student.
 - **`totalMistakes()`** method that will return the number of incorrect answers.
 - **`isPassing()`** method that will return true if the student passed the exam, or false if the student failed.  A student must correctly answer 14 out of 20 questions in order to pass the test.
 - **`toString()`** a method to display the correct answers and the student answers.  It must be in a side by side, 2 column format, with item numbers as follows:
 
-| ANSWER KEY | Student’s Answers |
+| ANSWER KEY | Student’s Name    |
 |------------|-------------------|
 | 1) B       | 1) A              |
 | 2) D       | 2) A              |
@@ -39,15 +58,15 @@ Hint:  Create a String and initialize it to the first line of the output using a
 ### Complete the `Main` class to test your `UnitTest` class
 
 In the main method:
-- Create a String array called answerArray of size 20.
 - Create a Scanner object.
-- Use a for loop to allow the user to enter their answers one at a time until they have entered all 20 answers.  Store these into the answerArray as they enter them.  It should not matter if they enter upper or lower case letters.
-- Create a UnitTest object using the array of answers as the parameter.
+- Use the scanner to read in the `.csv` file
+
+- Create a UnitTest object using the array of students as the parameter.
 - Display the following information:
-  - The correct answers and student’s answers using the toString method.
-  - Number of Correct Answers: ___ (the blank should be filled in with the appropriate value returned from the appropriate method).
-  - Number of Mistakes: ___ (the blank should be filled in with the appropriate value returned from the appropriate method).
-  - Display either “The student PASSED” or “The student FAILED” as determined by the appropriate method.
+  - The correct answers and any student’s answers (with the student's name) using the toString method.
+  - Average Number of Correct Answers: ___ (the blank should be filled in with the appropriate value returned from the appropriate method).
+  - Average Number of Mistakes: ___ (the blank should be filled in with the appropriate value returned from the appropriate method).
+  - The names of students who PASSED and names of students who FAILED as determined by the appropriate method.
 
 
 
